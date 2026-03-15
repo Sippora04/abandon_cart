@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Web Store</title>
+    <style>
+        body { font-family: sans-serif; padding: 40px; line-height: 1.6; }
+        .product-card { border: 1px solid #ddd; padding: 20px; width: 300px; border-radius: 8px; }
+        .price { font-weight: bold; color: #2ecc71; font-size: 1.2em; }
+        button { background: #3498db; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 4px; }
+        input { padding: 8px; width: 250px; margin-bottom: 10px; }
+        #cart-status { margin-top: 20px; color: #7f8c8d; font-style: italic; }
+    </style>
+</head>
+<body>
+
+    <h2>Checkout Identity</h2>
+    <p>Enter email to begin (This "Identifies" the user in Data Cloud):</p>
+    <input type="email" id="user-email" placeholder="customer@example.com">
+
+    <hr>
+
+    <div class="product-card">
+        <h3 id="p-name">Premium Trail Boots</h3>
+        <p>ID: <span id="p-id">BOOT-9901</span></p>
+        <p class="price">$<span id="p-price">120.00</span></p>
+        <button id="add-to-cart-btn">Add to Cart</button>
+    </div>
+
+    <div id="cart-status">Cart is empty</div>
+
+    <script>
+        // Simple UI logic to simulate a cart
+        const cartBtn = document.getElementById('add-to-cart-btn');
+        const emailInput = document.getElementById('user-email');
+
+        cartBtn.addEventListener('click', () => {
+            document.getElementById('cart-status').innerText = "Item added! (Event sent to Data Cloud)";
+            console.log("Add to Cart triggered for BOOT-9901");
+        });
+
+        // "Identify" the user as they type their email
+        emailInput.addEventListener('blur', () => {
+            console.log("Identity captured: " + emailInput.value);
+            // In a real sitemap, this would trigger an 'Identity' event
+        });
+    </script>
+</body>
+</html>
